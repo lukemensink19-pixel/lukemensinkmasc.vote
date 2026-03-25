@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Luke Mensink for 2026–27 MASC President. Rosemount High School. Kindness, Leadership, Action." />
+  <meta property="og:title" content="Luke Mensink for MASC President" />
+  <meta property="og:description" content="Student voices. Bigger futures. Real connections." />
+  <meta property="og:image" content="https://lukemensinkmasc.vote/og-image.png" />
+  <meta property="og:url" content="https://lukemensinkmasc.vote" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Luke Mensink for MASC President" />
+  <meta name="twitter:description" content="Student voices. Bigger futures. Real connections." />
+  <meta name="twitter:image" content="https://lukemensinkmasc.vote/og-image.png" />
+  <link rel="canonical" href="https://lukemensinkmasc.vote" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230a1f44'/><text x='16' y='22' font-family='serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>LM</text></svg>" />
+  <title>Luke Mensink for 2026–27 MASC President</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1f44;
+      --red: #c8102e;
+      --white: #ffffff;
+      --offwhite: #f4f6fa;
+      --border: #dce3ed;
+      --text: #0a1628;
+      --muted: #3a4a5c;
+      --light: #5a6a7e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 58px;
+      background: var(--navy);
+      border-bottom: 3px solid var(--red);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links li a {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links li a:hover { color: var(--white); }
+    .nav-cta {
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      color: var(--white) !important;
+      background: var(--red);
+      padding: 6px 16px;
+      border-radius: 2px;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--red); color: var(--white); padding: 8px 16px; font-size: 13px; font-weight: 600; border-radius: 2px; z-index: 1001; text-decoration: none; }
+    .skip-link:focus { top: 0.5rem; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; transition: 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--navy);
+      border-bottom: 3px solid var(--red);
+      padding: 1rem 2rem;
+      gap: 1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 5.5rem 2rem 6.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(-55deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 18px);
+      pointer-events: none;
+    }
+    .hero::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red); }
+    .hero-inner { position: relative; z-index: 2; }
+    .badge {
+      display: inline-block;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 2px;
+      padding: 5px 18px;
+      margin-bottom: 2.2rem;
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(3rem, 7.5vw, 5.5rem);
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+    .l1 { display: block; animation: fadeUp 0.8s ease 0.2s both; }
+    .l2 { display: block; font-style: italic; font-weight: 400; color: var(--red); animation: fadeUp 0.8s ease 0.35s both; }
+    .l3 { display: block; animation: fadeUp 0.8s ease 0.5s both; }
+    .divider-line { width: 48px; height: 3px; background: var(--red); margin: 1.8rem auto; animation: fadeUp 0.8s ease 0.6s both; }
+    .tagline {
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--white);
+      animation: fadeUp 0.8s ease 0.7s both;
+    }
+    .tagline span { margin: 0 10px; color: rgba(255,255,255,0.3); }
+
+    /* ── WAVE ── */
+    .wave-wrap { background: var(--navy); line-height: 0; margin-bottom: -2px; }
+    .wave-wrap svg { display: block; width: 100%; }
+
+    /* ── RIBBON ── */
+    .ribbon {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; flex-wrap: wrap;
+      background: rgba(10,31,68,0.97);
+      border-top: 1px solid rgba(200,16,46,0.25);
+      padding: 0.5rem 2rem;
+    }
+    .ribbon-item { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+    .ribbon-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(200,16,46,0.35); flex-shrink: 0; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── SECTION SHARED ── */
+    .inner { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
+    .section-label { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
+    .section-rule { border: none; border-top: 0.5px solid var(--border); }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700; color: var(--navy);
+      margin-bottom: 1.25rem; line-height: 1.15;
+    }
+
+    /* ── ABOUT ── */
+    .about-section p { font-size: 15px; line-height: 1.9; color: var(--muted); margin-bottom: 1rem; }
+    .belief-block { border-left: 3px solid var(--red); padding: 1rem 1.4rem; background: var(--offwhite); margin-top: 1.5rem; border-radius: 0 2px 2px 0; }
+    .belief-label { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.4rem; }
+    .belief-block p { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-style: italic; color: var(--navy); line-height: 1.6; margin: 0; }
+
+    /* ── GOALS ── */
+    .goals-section { background: var(--offwhite); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .goals-intro { font-size: 15px; line-height: 1.9; color: var(--muted); }
+    .goals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 2rem; }
+    .goal-card {
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 2px; padding: 1.5rem;
+      background: var(--white);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .goal-card:hover { box-shadow: 0 6px 24px rgba(10,31,68,0.09); transform: translateY(-2px); }
+    .goal-number { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; color: var(--red); margin-bottom: 0.5rem; }
+    .goal-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; }
+    .goal-card p { font-size: 14px; line-height: 1.7; color: var(--light); margin: 0; }
+
+    /* ── QUALS ── */
+    .quals-section { background: var(--white); }
+    .cred-list { display: flex; flex-direction: column; gap: 12px; margin-top: 1.8rem; }
+    .cred-item {
+      padding: 1.1rem 1.3rem;
+      background: var(--offwhite);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      border-radius: 0 2px 2px 0;
+      transition: box-shadow 0.2s;
+    }
+    .cred-item:hover { box-shadow: 0 3px 12px rgba(10,31,68,0.06); }
+    .cred-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .cred-desc { font-size: 13px; color: var(--light); line-height: 1.65; margin: 0; }
+
+    /* ── CONNECT ── */
+    .connect-section {
+      background: var(--navy);
+      border-top: 3px solid var(--red);
+      text-align: center;
+      padding: 4rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .connect-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(-55deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 18px);
+      pointer-events: none;
+    }
+    .connect-inner { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
+    .connect-section h2 { color: var(--white); margin-bottom: 0.75rem; }
+    .connect-section p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 2rem; }
+    .connect-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.06em; color: var(--white);
+      background: var(--red); border: none; border-radius: 2px;
+      padding: 11px 26px; cursor: pointer; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-outline {
+      display: inline-block; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.06em; color: var(--white);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 2px; padding: 11px 26px;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+
+    /* ── FOOTER ── */
+    .footer { background: #060f20; padding: 2.5rem 1.5rem; }
+    .footer-inner { max-width: 800px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; padding-bottom: 2rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; }
+    .footer-col-label { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.8rem; }
+    .footer-name-big { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); line-height: 1.3; }
+    .footer-sub { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 0.35rem; line-height: 1.7; }
+    .footer-link {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 600; color: var(--white);
+      text-decoration: none; padding: 9px 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 2px; margin-bottom: 8px;
+      background: rgba(255,255,255,0.04);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .footer-link:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
+    .footer-link svg { flex-shrink: 0; opacity: 0.6; }
+    .footer-bottom { text-align: center; }
+    .footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 0.05em; }
+    .footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; }
+
+    /* ── SCROLL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .goals-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 1.8rem; }
+      .connect-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#about">Skip to content</a>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <a href="#" class="nav-name" aria-label="Back to top">Luke Mensink for MASC President</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#goals">Goals</a></li>
+    <li><a href="#why">Why me</a></li>
+    <li><a href="#connect" class="nav-cta">Get involved</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#goals" onclick="closeMobile()">Goals</a>
+  <a href="#why" onclick="closeMobile()">Why me</a>
+  <a href="#connect" onclick="closeMobile()">Get involved</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="badge">MASC President Candidate · Rosemount High School</div>
+    <h1>
+      <span class="l1">Student voices.</span>
+      <span class="l2">Bigger futures.</span>
+      <span class="l3">Real connections.</span>
+    </h1>
+    <div class="divider-line"></div>
+    <p class="tagline">Kindness <span>·</span> Leadership <span>·</span> Action</p>
+  </div>
+</header>
+
+<!-- WAVE -->
+<div class="wave-wrap">
+  <svg viewBox="0 0 1200 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,0 C200,80 400,0 600,50 C800,100 1000,20 1200,60 L1200,80 L0,80 Z" fill="#ffffff"/>
+    <path d="M0,20 C150,70 350,10 550,55 C750,100 950,30 1200,50 L1200,80 L0,80 Z" fill="rgba(255,255,255,0.35)"/>
+  </svg>
+</div>
+
+<!-- RIBBON -->
+<div class="ribbon">
+  <span class="ribbon-item">Student Voice</span>
+  <div class="ribbon-dot"></div>
+  <span class="ribbon-item">Opportunity</span>
+  <div class="ribbon-dot"></div>
+  <span class="ribbon-item">Connection</span>
+  <div class="ribbon-dot"></div>
+  <span class="ribbon-item">Action</span>
+</div>
+
+<!-- ABOUT -->
+<main>
+<section id="about" class="about-section">
+  <div class="inner reveal">
+    <div class="section-label">Introduction</div>
+    <h2>Hi, I'm Luke Mensink.</h2>
+    <p>I'm a Junior at Rosemount High School: a student leader, a baseball player, and an avid traveller and outdoorsman. Whether I'm helping out in school, travelling, or competing on the diamond, I've learned that the most important parts of leadership involve kindness in the way you treat others and how you make them feel.</p>
+    <p>Those same values are very important in student government. As Rosemount's elected Student Body President and a MASC Capital Division Officer, I've seen firsthand what's possible when students are given a voice, and their ideas are heard. Now I want to bring that energy to every student in Minnesota.</p>
+    <div class="belief-block">
+      <div class="belief-label">What I believe</div>
+      <p>"Leadership is being kind to others, and taking action with others in mind."</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- GOALS -->
+<section id="goals" class="goals-section">
+  <div class="inner reveal">
+    <div class="section-label">Goals & ideas</div>
+    <h2>What I'll fight for.</h2>
+    <p class="goals-intro">These aren't just talking points, they're a concrete plan to make MASC work harder for every Minnesota student.</p>
+    <div class="goals-grid">
+      <div class="goal-card">
+        <div class="goal-number">01</div>
+        <h3>Amplify the student voice</h3>
+        <p>Strengthen the connection between MASC and school administrators so student ideas and feedback directly shape school-level decisions, from scheduling to student life, across every district.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-number">02</div>
+        <h3>Connect students to their futures</h3>
+        <p>Partner with post-secondary counselors to create real career and college exploration opportunities for students across Minnesota.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-number">03</div>
+        <h3>Take student voices to the Capitol</h3>
+        <p>Build a direct line between MASC and Minnesota legislators so the students who are affected by education policy have a seat at the table when those laws are written.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-number">04</div>
+        <h3>Unite students across the state</h3>
+        <p>Bring students together through shared experiences, like new events and partnerships with the Twins and Timberwolves, to create and continue programs that spark lasting friendships, connections, and big ideas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- QUALIFICATIONS -->
+<section id="why" class="quals-section">
+  <div class="inner reveal">
+    <div class="section-label">Qualifications</div>
+    <h2>Why I'm ready.</h2>
+    <div class="cred-list">
+      <div class="cred-item">
+        <div class="cred-title">Student Body President, Rosemount High School</div>
+        <p class="cred-desc">Leading a school community, advocating for student needs, and building a culture of inclusion and action day-to-day at Rosemount, especially during massive renovations at RHS, where strong leadership is vital.</p>
+      </div>
+      <div class="cred-item">
+        <div class="cred-title">Capital Division Officer, MASC</div>
+        <p class="cred-desc">Experience working within the statewide MASC structure, coordinating across districts and schools to advance student leadership, and bringing in more school members to our events and CapDiv community.</p>
+      </div>
+      <div class="cred-item">
+        <div class="cred-title">Club Leadership & Community Involvement</div>
+        <p class="cred-desc">I'm involved in a variety of clubs and activities such as DECA, NHS, Model UN, Spanish Honor Society, and both Varsity and club Baseball, giving me unique experience and diverse perspectives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT / CTA -->
+<section id="connect" class="connect-section">
+  <div class="connect-inner reveal">
+    <div class="section-label" style="color:rgba(255,255,255,0.45);margin-bottom:0.6rem;">Get involved</div>
+    <h2>Your voice shapes MASC.</h2>
+    <p>Minnesota students deserve a president who shows up. Have an idea, a need, or just want to say hello, reach out. Your voice matters.</p>
+    <div class="connect-btns">
+      <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScxVagYbmYQ_32CzqCKJjGVyHEjyNzI8ujkrCTlRhUQOydBrw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Share your ideas ↗</a>
+      <a class="btn-outline" href="mailto:voteluke2026@gmail.com">Email Luke</a>
+      <a class="btn-outline" href="https://instagram.com/vote_Luke_2026" target="_blank" rel="noopener noreferrer">@vote_Luke_2026</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-col-label">Candidate</div>
+        <div class="footer-name-big">Luke Mensink</div>
+        <div class="footer-sub">2026–27 MASC President Candidate<br>Rosemount High School · Capital Division</div>
+      </div>
+      <div>
+        <div class="footer-col-label">Get in touch</div>
+        <a class="footer-link" href="mailto:voteluke2026@gmail.com">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="white" stroke-width="1.3"/><path d="M1 4.5l7 5 7-5" stroke="white" stroke-width="1.3"/></svg>
+          voteluke2026@gmail.com
+        </a>
+        <a class="footer-link" href="https://instagram.com/vote_Luke_2026" target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="white" stroke-width="1.3"/><circle cx="8" cy="8" r="2.8" stroke="white" stroke-width="1.3"/><circle cx="11.5" cy="4.5" r="0.8" fill="white"/></svg>
+          @vote_Luke_2026
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>LukeMensinkMASC.vote &nbsp;·&nbsp; Rosemount, MN &nbsp;·&nbsp; <a href="mailto:voteluke2026@gmail.com">voteluke2026@gmail.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open menu');
+  }
+  // Close mobile menu on outside tap
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) closeMobile();
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Active nav highlight — only target actual page sections
+  const sectionIds = ['about', 'goals', 'why', 'connect'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+  const navLinks = document.querySelectorAll('.nav-links li a:not(.nav-cta)');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 80) current = section.id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current ? 'rgba(255,255,255,0.95)' : '';
+    });
+  });
+</script>
+</body>
+</html>
