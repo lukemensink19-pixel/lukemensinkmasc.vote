@@ -288,12 +288,59 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .goals-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 1.8rem; }
-      .connect-btns { flex-direction: column; align-items: center; }
+      .connect-btns { flex-direction: column; align-items: stretch; max-width: 280px; margin: 0 auto; }
+
+      /* Tighter nav */
+      nav { padding: 0 1rem; height: 52px; }
+      .nav-name { font-size: 0.85rem; }
+
+      /* Smaller hero on mobile */
+      .hero { padding: 3rem 1.2rem 3.5rem; }
+      .badge { font-size: 9px; padding: 4px 14px; margin-bottom: 1.5rem; }
+      .hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); line-height: 1.05; margin-bottom: 0.6rem; }
+      .divider-line { margin: 1.2rem auto; }
+      .tagline { font-size: 11px; letter-spacing: 0.2em; }
+      .tagline span { margin: 0 6px; }
+
+      /* Compact ribbon */
+      .ribbon { padding: 0.4rem 1rem; gap: 0.8rem; }
+      .ribbon-item { font-size: 9px; }
+
+      /* Sections need less padding */
+      .inner { padding: 2.5rem 1.2rem; }
+
+      /* About */
+      .about-section p { font-size: 14px; line-height: 1.8; }
+      .belief-block { padding: 0.8rem 1rem; }
+      .belief-block p { font-size: 0.95rem; }
+
+      /* Goal cards */
+      .goal-card { padding: 1.2rem; }
+      .goal-card h3 { font-size: 1rem; }
+      .goal-card p { font-size: 13px; }
+
+      /* Credentials */
+      .cred-item { padding: 0.9rem 1rem; }
+      .cred-title { font-size: 13px; }
+      .cred-desc { font-size: 12px; }
+
+      /* Connect */
+      .connect-section { padding: 2.5rem 1.2rem; }
+      .connect-section p { font-size: 14px; }
+      .btn-primary, .btn-outline { padding: 12px 20px; font-size: 14px; text-align: center; }
+
+      /* Footer */
+      .footer { padding: 2rem 1.2rem; }
+      .footer-name-big { font-size: 1.1rem; }
+      .footer-link { font-size: 12px; padding: 10px 12px; }
+
+      /* h2 smaller on mobile */
+      h2 { font-size: clamp(1.5rem, 6vw, 2rem); }
     }
   </style>
 </head>
