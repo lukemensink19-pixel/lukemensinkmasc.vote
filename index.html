@@ -279,6 +279,23 @@
     .footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 0.05em; }
     .footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; }
 
+    /* ── SHARE ── */
+    .share-section { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .share-label { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.8rem; }
+    .share-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; color: var(--white);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 2px; padding: 9px 16px;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .share-btn:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.35); }
+    .share-btn svg { flex-shrink: 0; width: 16px; height: 16px; }
+    .share-btn--copied { background: rgba(200,16,46,0.3); border-color: var(--red); }
+
     /* ── SCROLL ANIMATION ── */
     .reveal {
       opacity: 0;
@@ -294,6 +311,8 @@
       .goals-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 1.8rem; }
       .connect-btns { flex-direction: column; align-items: stretch; max-width: 280px; margin: 0 auto; }
+      .share-btns { justify-content: center; }
+      .share-btn { padding: 9px 12px; font-size: 11px; }
 
       /* Tighter nav */
       nav { padding: 0 1rem; height: 52px; }
@@ -486,6 +505,27 @@
       <a class="btn-outline" href="mailto:voteluke2026@gmail.com">Email Luke</a>
       <a class="btn-outline" href="https://instagram.com/vote_Luke_2026" target="_blank" rel="noopener noreferrer">@vote_Luke_2026</a>
     </div>
+    <div class="share-section">
+      <div class="share-label">Spread the word</div>
+      <div class="share-btns">
+        <a class="share-btn" href="sms:&body=Check%20out%20Luke%20Mensink%20for%20MASC%20President%20%E2%80%94%20https%3A%2F%2Flukemensinkmasc.vote" aria-label="Share via iMessage">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          iMessage
+        </a>
+        <a class="share-btn" href="https://twitter.com/intent/tweet?text=Check%20out%20Luke%20Mensink%20for%20MASC%20President&url=https%3A%2F%2Flukemensinkmasc.vote" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X
+        </a>
+        <a class="share-btn" href="https://www.snapchat.com/scan?attachmentUrl=https%3A%2F%2Flukemensinkmasc.vote" target="_blank" rel="noopener noreferrer" aria-label="Share on Snapchat">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M12.166 3c.796 0 3.495.223 4.769 3.073.426.953.323 2.582.239 3.768l-.013.18c-.008.107-.016.207-.016.286 0 .263.112.395.35.45.086.02.18.03.274.03.325 0 .666-.12.918-.222l.068-.027c.1-.04.2-.07.3-.07.374 0 .6.27.6.525 0 .51-.596.815-1.208 1.087-.102.046-.248.1-.36.147-.33.14-.52.248-.57.498-.01.06-.02.12-.01.18.04.32.31.69.59 1.07.49.66 1.1 1.48.88 2.35-.13.5-.55.84-.97.99-.44.16-.88.22-1.25.27-.16.02-.31.04-.44.07-.14.03-.22.06-.31.14-.12.12-.21.34-.34.64l-.03.06c-.21.46-.52 1.04-1.17 1.04-.12 0-.25-.02-.4-.06-.39-.1-.74-.15-1.09-.15-.21 0-.41.02-.63.06-.41.08-.77.28-1.14.49-.52.3-1.06.6-1.78.6h-.07c-.72 0-1.26-.31-1.78-.6-.37-.21-.73-.41-1.14-.49-.22-.04-.42-.06-.63-.06-.34 0-.7.05-1.09.15-.14.04-.28.06-.4.06-.71 0-.99-.64-1.17-1.04l-.03-.06c-.13-.3-.22-.52-.34-.64-.09-.08-.17-.11-.31-.14-.13-.03-.28-.05-.44-.07-.37-.05-.81-.11-1.25-.27-.42-.15-.84-.49-.97-.99-.22-.87.39-1.69.88-2.35.28-.38.55-.75.59-1.07.01-.06 0-.12-.01-.18-.05-.25-.24-.36-.57-.5-.11-.05-.26-.1-.36-.15-.61-.27-1.21-.58-1.21-1.09 0-.26.23-.53.6-.53.1 0 .2.03.3.07l.07.03c.25.1.59.22.92.22.09 0 .19-.01.27-.03.24-.06.35-.19.35-.45 0-.08-.01-.18-.02-.29l-.01-.18c-.08-1.19-.19-2.82.24-3.77C8.5 3.22 11.2 3 11.99 3h.18z"/></svg>
+          Snap
+        </a>
+        <button class="share-btn" id="copyLinkBtn" aria-label="Copy link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Copy link
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -561,6 +601,23 @@
     });
     navLinks.forEach(link => {
       link.style.color = link.getAttribute('href') === '#' + current ? 'rgba(255,255,255,0.95)' : '';
+    });
+  });
+
+  // Copy link button
+  const copyBtn = document.getElementById('copyLinkBtn');
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('https://lukemensinkmasc.vote').then(() => {
+      copyBtn.classList.add('share-btn--copied');
+      copyBtn.querySelector('svg').style.display = 'none';
+      const origText = copyBtn.childNodes[copyBtn.childNodes.length - 1];
+      const prevText = origText.textContent;
+      origText.textContent = ' Copied!';
+      setTimeout(() => {
+        copyBtn.classList.remove('share-btn--copied');
+        copyBtn.querySelector('svg').style.display = '';
+        origText.textContent = prevText;
+      }, 2000);
     });
   });
 </script>
