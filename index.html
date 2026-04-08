@@ -17,6 +17,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230a1f44'/><text x='16' y='22' font-family='serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>LM</text></svg>" />
   <title>Luke Mensink for 2026–27 MASC President</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     :root {
       --navy: #0a1f44;
@@ -302,6 +303,127 @@
     .share-btn svg { flex-shrink: 0; width: 16px; height: 16px; }
     .share-btn--copied { background: rgba(200,16,46,0.3); border-color: var(--red); }
 
+    /* ── MAP MODAL ── */
+    .map-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,31,68,0.85);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      animation: mapFadeIn 0.25s ease;
+    }
+    .map-modal-overlay.open { display: flex; }
+    @keyframes mapFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .map-modal {
+      background: var(--white);
+      border-radius: 4px;
+      width: 100%;
+      max-width: 640px;
+      max-height: 90vh;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+    }
+    .map-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.4rem;
+      background: var(--navy);
+      border-bottom: 3px solid var(--red);
+    }
+    .map-modal-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 0;
+    }
+    .map-modal-header p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin: 0.2rem 0 0;
+    }
+    .map-close-btn {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .map-close-btn:hover { color: var(--white); }
+    .map-container {
+      width: 100%;
+      height: 420px;
+    }
+    .map-container .leaflet-popup-content-wrapper {
+      border-radius: 2px;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+    .map-container .leaflet-popup-content {
+      font-size: 13px;
+      color: var(--navy);
+      margin: 8px 12px;
+    }
+    .map-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.4rem;
+      background: var(--offwhite);
+      border-top: 1px solid var(--border);
+    }
+    .map-footer-hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .map-lock-btn {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--red);
+      border: none;
+      border-radius: 2px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .map-lock-btn:hover { opacity: 0.85; }
+    .map-lock-btn.show { display: inline-flex; }
+    .map-locked-msg {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .map-locked-msg.show { display: inline-flex; }
+    .map-pin-tab {
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .map-pin-tab:hover { color: var(--white); }
+
     /* ── SCROLL ANIMATION ── */
     .reveal {
       opacity: 0;
@@ -366,6 +488,14 @@
 
       /* h2 smaller on mobile */
       h2 { font-size: clamp(1.5rem, 6vw, 2rem); }
+
+      /* Map modal */
+      .map-container { height: 320px; }
+      .map-modal-header { padding: 0.8rem 1rem; }
+      .map-modal-header h3 { font-size: 1rem; }
+      .map-footer { padding: 0.6rem 1rem; }
+      .map-footer-hint { font-size: 11px; }
+      .map-lock-btn { font-size: 12px; padding: 7px 16px; }
     }
   </style>
 </head>
@@ -380,6 +510,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#goals">Goals</a></li>
     <li><a href="#why">Why me</a></li>
+    <li><button class="map-pin-tab" id="mapNavBtn">📍 Drop a pin</button></li>
     <li><a href="#connect" class="nav-cta">Get involved</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -392,6 +523,7 @@
   <a href="#about" onclick="closeMobile()">About</a>
   <a href="#goals" onclick="closeMobile()">Goals</a>
   <a href="#why" onclick="closeMobile()">Why me</a>
+  <a href="javascript:void(0)" onclick="closeMobile();openMap()">📍 Drop a pin</a>
   <a href="#connect" onclick="closeMobile()">Get involved</a>
 </div>
 
@@ -536,6 +668,25 @@
 </section>
 </main>
 
+<!-- MAP MODAL -->
+<div class="map-modal-overlay" id="mapOverlay">
+  <div class="map-modal">
+    <div class="map-modal-header">
+      <div>
+        <h3>Represent your corner of Minnesota</h3>
+        <p>Drag the flag to your hometown</p>
+      </div>
+      <button class="map-close-btn" id="mapCloseBtn" aria-label="Close map">&times;</button>
+    </div>
+    <div class="map-container" id="mnMap"></div>
+    <div class="map-footer">
+      <span class="map-footer-hint" id="mapHint">Drag the flag, then lock it in</span>
+      <button class="map-lock-btn" id="mapLockBtn">Plant my flag</button>
+      <span class="map-locked-msg" id="mapLockedMsg">&#10003; Flag planted!</span>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
@@ -563,7 +714,103 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
+  // ── MAP ──
+  let mnMap = null;
+  const mapOverlay = document.getElementById('mapOverlay');
+  const mapCloseBtn = document.getElementById('mapCloseBtn');
+  const mapNavBtn = document.getElementById('mapNavBtn');
+
+  function openMap() {
+    mapOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (!mnMap) {
+      const mnBounds = L.latLngBounds([43.4, -97.3], [49.4, -89.5]);
+      const lockBtn = document.getElementById('mapLockBtn');
+      const lockedMsg = document.getElementById('mapLockedMsg');
+      const mapHint = document.getElementById('mapHint');
+      let flagLocked = false;
+
+      mnMap = L.map('mnMap', {
+        center: [46.2, -94.5],
+        zoom: 7,
+        minZoom: 6,
+        maxZoom: 13,
+        zoomControl: true,
+        maxBounds: mnBounds,
+        maxBoundsViscosity: 1.0
+      });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+        subdomains: 'abcd'
+      }).addTo(mnMap);
+
+      const flagIcon = L.divIcon({
+        className: '',
+        html: '<svg width="28" height="36" viewBox="0 0 28 36" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35));cursor:grab;"><line x1="4" y1="2" x2="4" y2="35" stroke="#0a1f44" stroke-width="2.5" stroke-linecap="round"/><path d="M4 2 L26 8 L4 16 Z" fill="#c8102e" stroke="#0a1f44" stroke-width="0.5"/></svg>',
+        iconSize: [28, 36],
+        iconAnchor: [4, 35],
+        popupAnchor: [10, -30]
+      });
+
+      const lockedFlagIcon = L.divIcon({
+        className: '',
+        html: '<svg width="28" height="36" viewBox="0 0 28 36" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35));"><line x1="4" y1="2" x2="4" y2="35" stroke="#0a1f44" stroke-width="2.5" stroke-linecap="round"/><path d="M4 2 L26 8 L4 16 Z" fill="#c8102e" stroke="#0a1f44" stroke-width="0.5"/></svg>',
+        iconSize: [28, 36],
+        iconAnchor: [4, 35],
+        popupAnchor: [10, -30]
+      });
+
+      const marker = L.marker([46.2, -94.5], {
+        draggable: true,
+        icon: flagIcon
+      }).addTo(mnMap);
+
+      marker.bindPopup('<b>Drag the flag to your hometown!</b>').openPopup();
+
+      marker.on('dragend', function() {
+        if (flagLocked) return;
+        const pos = marker.getLatLng();
+        if (!mnBounds.contains(pos)) {
+          marker.setLatLng([46.2, -94.5]);
+          marker.bindPopup('<b>Keep it in Minnesota!</b>').openPopup();
+          lockBtn.classList.remove('show');
+          return;
+        }
+        marker.closePopup();
+        lockBtn.classList.add('show');
+        mapHint.textContent = 'Happy with your spot?';
+      });
+
+      lockBtn.addEventListener('click', function() {
+        flagLocked = true;
+        marker.dragging.disable();
+        marker.setIcon(lockedFlagIcon);
+        marker.bindPopup('<b>Representing Minnesota!</b>').openPopup();
+        lockBtn.classList.remove('show');
+        lockedMsg.classList.add('show');
+        mapHint.textContent = '';
+      });
+    } else {
+      setTimeout(() => mnMap.invalidateSize(), 100);
+    }
+  }
+
+  function closeMap() {
+    mapOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  mapNavBtn.addEventListener('click', openMap);
+  mapCloseBtn.addEventListener('click', closeMap);
+  mapOverlay.addEventListener('click', (e) => {
+    if (e.target === mapOverlay) closeMap();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mapOverlay.classList.contains('open')) closeMap();
+  });
+
   // Mobile menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
